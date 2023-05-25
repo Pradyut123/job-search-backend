@@ -36,7 +36,7 @@ export const login = async (req, res, next) => {
       return next(ErrorResponse("invalid credentials", 400));
     }
     //check password
-    const isMatched = await bcrypt.comparePassword(password, user.password);
+    const isMatched = await bcrypt.compare(password, user.password);
     if (!isMatched) {
       return next(ErrorResponse("invalid credentials", 400));
     }
@@ -54,8 +54,6 @@ const sendTokenResponse = async (user, codeStatus, res) => {
     .cookie("token", token, { maxAge: 60 * 60 * 1000, httpOnly: true })
     .json({ success: true, role: user.role });
 };
-
-
 
 export const logout = (req, res) => {
   res
