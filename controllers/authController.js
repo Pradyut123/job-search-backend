@@ -1,5 +1,6 @@
 import User from "../models/user.model.js";
 import ErrorResponse from "../utils/errorResponse.js";
+import bcrypt from "bcryptjs";
 
 export const register = async (req, res, next) => {
   const { email } = req.body;
