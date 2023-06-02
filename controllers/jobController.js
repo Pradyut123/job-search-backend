@@ -5,6 +5,8 @@ export const createJob = async (req, res, next) => {
   try {
     const job = await Job.create({
       title: req.body.title,
+      companyName: req.body.companyName,
+      role: req.body.role,
       description: req.body.description,
       shortDesc: req.body.shortDesc,
       salary: req.body.salary,
